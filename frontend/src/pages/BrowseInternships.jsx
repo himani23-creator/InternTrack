@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import InternshipContext from '../context/InternshipContext';
+import { API_URL } from '../config';
 
 const BrowseInternships = () => {
     const { addInternship } = useContext(InternshipContext);
@@ -23,7 +24,7 @@ const BrowseInternships = () => {
 
     const fetchCategories = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/api/browse/categories');
+            const response = await axios.get(`${API_URL}/api/browse/categories`);
             setCategories(response.data);
         } catch (error) {
             console.error('Error fetching categories:', error);
@@ -40,7 +41,7 @@ const BrowseInternships = () => {
 
         setIsSearching(true);
         try {
-            const response = await axios.get(`http://localhost:5000/api/browse/search?q=${query}`);
+            const response = await axios.get(`${API_URL}/api/browse/search?q=${query}`);
             setSearchResults(response.data);
         } catch (error) {
             console.error('Error searching internships:', error);
@@ -52,7 +53,7 @@ const BrowseInternships = () => {
         setIsSearching(false);
         setSearchQuery('');
         try {
-            const response = await axios.get(`http://localhost:5000/api/browse/category/${categoryName}`);
+            const response = await axios.get(`${API_URL}/api/browse/category/${categoryName}`);
             setCategoryInternships(response.data);
         } catch (error) {
             console.error('Error fetching category internships:', error);

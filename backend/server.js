@@ -8,7 +8,14 @@ const app = express();
 connectDB();
 
 // middleware
-app.use(cors());
+app.use(cors({
+    origin: [
+        'http://localhost:5173',
+        'https://interntrack-kj8nj64dj-himani23-creators-projects.vercel.app',
+        'https://interntrack.vercel.app'  // Custom domain if you set one up
+    ],
+    credentials: true
+}));
 app.use(express.json());
 // serve uploaded files
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));

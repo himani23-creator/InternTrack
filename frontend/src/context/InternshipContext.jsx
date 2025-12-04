@@ -1,6 +1,7 @@
 import { createContext, useState, useContext, useEffect } from 'react';
 import axios from 'axios';
 import AuthContext from './AuthContext';
+import { API_URL } from '../config';
 
 const InternshipContext = createContext();
 
@@ -34,7 +35,7 @@ export const InternshipProvider = ({ children }) => {
                 ...(params.search && { search: params.search })
             });
 
-            const res = await axios.get(`http://localhost:5000/api/internships?${queryParams}`);
+            const res = await axios.get(`${API_URL}/api/internships?${queryParams}`);
             setInternships(res.data.internships);
             setPagination(res.data.pagination);
         } catch (err) {
@@ -44,7 +45,7 @@ export const InternshipProvider = ({ children }) => {
 
     const addInternship = async (internship) => {
         try {
-            const res = await axios.post('http://localhost:5000/api/internships', internship);
+            const res = await axios.post(`${API_URL}/api/internships`, internship);
             setInternships([res.data, ...internships]);
         } catch (err) {
             console.error(err.response?.data || err.message);
@@ -53,7 +54,7 @@ export const InternshipProvider = ({ children }) => {
 
     const updateInternship = async (id, updatedInternship) => {
         try {
-            const res = await axios.put(`http://localhost:5000/api/internships/${id}`, updatedInternship);
+            const res = await axios.put(`${API_URL}/api/internships/${id}`, updatedInternship);
             setInternships(internships.map((i) => (i._id === id ? res.data : i)));
         } catch (err) {
             console.error(err.response?.data || err.message);
@@ -62,7 +63,7 @@ export const InternshipProvider = ({ children }) => {
 
     const deleteInternship = async (id) => {
         try {
-            await axios.delete(`http://localhost:5000/api/internships/${id}`);
+            await axios.delete(`${API_URL}/api/internships/${id}`);
             setInternships(internships.filter((i) => i._id !== id));
         } catch (err) {
             console.error(err.response?.data || err.message);

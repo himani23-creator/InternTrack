@@ -2,6 +2,7 @@ import { useState, useContext } from 'react';
 import AuthContext from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { API_URL } from '../config';
 
 const Signup = () => {
     const [name, setName] = useState('');
@@ -13,7 +14,7 @@ const Signup = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('http://localhost:5000/api/auth/signup', { name, email, password });
+            await axios.post(`${API_URL}/api/auth/signup`, { name, email, password });
             // Auto login after register
             const success = await login(email, password);
             if (success) {
