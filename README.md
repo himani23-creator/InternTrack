@@ -4,7 +4,7 @@
 
 ## 🌐 Live Demo
 
-**🚀 Hosted Application:** [https://your-app-name.onrender.com](https://your-app-name.onrender.com)
+**🚀 Hosted Application:** [https://interntrack-kj8nj64dj-himani23-creators-projects.vercel.app](https://interntrack-kj8nj64dj-himani23-creators-projects.vercel.app)
 
 **📚 API Documentation:** [View API Docs](./API_DOCUMENTATION.md)
 
