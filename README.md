@@ -39,6 +39,7 @@
 ## 📸 Screenshots
 
 <!-- Add screenshots here after deployment -->
+![InternTrack Screenshot](./screenshot/screenshot.png)
 
 ## 🚀 Quick Start
 
